@@ -3,28 +3,14 @@
    //Date::Date ()=default;
 
 
-  Date::Date(short day,short month,short year){
-        changedate(day,month,year);
-    }
+
 
   void Date:: changedate(short day,short month,short year){
 
         m_day=day;
         m_month=month;
         m_year=year;
-
-
-        if ((m_day >= 1 && m_day <= 30) &&
-            (m_month >= 1 && m_month <= 12) &&
-            (m_year >= 1900 && m_year <= 2100)) {
-            // Código para data válida
-
-
-            m_valid=true;
-        }
-        else{
-            m_valid=false;
-        }
+        validate();
 
 
     }
@@ -41,6 +27,20 @@
 
     }
 
+    short Date::lastDayOfMonth() const
+    {
+        return 31;
+    }
 
-};
+    bool Date::isLeapYear(Date dt) const
+    {
+        return ((dt%400==0)||(dt%4==0)&& !(dt%100==0));
+    }
+
+
+
+
+}
+
+
 
